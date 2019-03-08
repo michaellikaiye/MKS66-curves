@@ -9,10 +9,14 @@ z0  z1  ... zn
 """
 import math
 
-def make_bezier():
+def make_circle(cx, cy, cz, r):
+    precision = 100
     pass
 
-def make_hermite():
+def make_bezier(x0, y0, x1, y1, x2, y2, x3, y3):
+    pass
+
+def make_hermite(x0, y0, x1, y1, rx0, ry0, rx1, ry1):
     pass
 
 def generate_curve_coefs( p1, p2, p3, p4, t ):
@@ -71,7 +75,7 @@ def print_matrix( matrix ):
             s+= str(matrix[c][r]) + ' '
         s+= '\n'
     print s
-    
+
 #turn the paramter matrix into an identity matrix
 #you may assume matrix is square
 def ident( matrix ):
