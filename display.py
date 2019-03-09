@@ -9,7 +9,7 @@ RED = 0
 GREEN = 1
 BLUE = 2
 
-DEFAULT_COLOR = [0, 0, 0]
+DEFAULT_COLOR = [255, 225, 60]
 
 def new_screen( width = XRES, height = YRES ):
     screen = []
@@ -57,4 +57,3 @@ def display( screen ):
     p = Popen( ['display', ppm_name], stdin=PIPE, stdout = PIPE )
     p.communicate()
     remove(ppm_name)
-

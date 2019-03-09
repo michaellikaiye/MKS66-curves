@@ -8,20 +8,39 @@ z0  z1  ... zn
 1  1        1
 """
 import math
-
-def make_circle(cx, cy, cz, r):
-    precision = 100
-    pass
+"""
+bezier: adds a bezier curve to the edge matrix - takes 8 parameters (x0, y0, x1, y1, x2, y2, x3, y3)
+This curve is drawn between (x0, y0) and (x3, y3)
+(x1, y1) and (x2, y2) are the control points for the curve.
+"""
 
 def make_bezier(x0, y0, x1, y1, x2, y2, x3, y3):
-    pass
+    xcoefs = generate_curve_coefs(x0, x1, x2, x3, 0)
+    ycoefs = generate_curve_coefs(y0, y1, y2, y3, 0)
+    return xcoefs, ycoefs
 
 def make_hermite(x0, y0, x1, y1, rx0, ry0, rx1, ry1):
-    pass
+    hermite = []
+    hermite.append([2, -3, 0, 1])
+    hermite.append([-2, 3, -0, 0])
+    hermite.append([1, -2, 1, 0])
+    hermite.append([1, -1, 0, 0])
+    Cx = [[x0, x1, rx0, rx1]]
+    matrix_mult(hermite, Cx)
+    Cy = [[y0, y1, ry0, ry1]]
+    matrix_mult(hermite, Cy)
+    return Cx[0], Cy[0]
+
 
 def generate_curve_coefs( p1, p2, p3, p4, t ):
-    pass
-
+    bezier = []
+    bezier.append([-1, 3, -3, 1])
+    bezier.append([3, -6, 3, 0])
+    bezier.append([-3, 3, 0, 0])
+    bezier.append([1, 0, 0, 0])
+    coefs = [[p1, p2, p3, p4]]
+    matrix_mult(bezier, coefs)
+    return coefs[0]
 
 def make_translate( x, y, z ):
     t = new_matrix()
